@@ -52,12 +52,21 @@ Single CSS file with custom properties:
 
 All vanilla ES6+. Total ~354 lines.
 
+### Images
+
+All images are in **WebP** format (`assets/images/`). Subdirectories: `hero/`, `catalog/`, `products/`, `portfolio/`, `blog/`. Convert new images with `cwebp -q 80 input.png -o output.webp`.
+
+**Favicon:** SVG at `assets/images/favicon.svg`, referenced via `<link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">` in every page.
+
+**404 page:** `404.html` at root (depth=0). Requires server-side configuration to serve on actual 404 responses.
+
 ### Known Gotchas
 
 - **`component:loaded` fires twice** — once after header loads, once after footer. Any listener on this event runs 2×. Functions like `initMobileMenu()` use a `mobileMenuInitialized` flag to prevent duplicate event handlers.
 - **z-index stacking:** header `1100` > mobile-menu `1050`. The burger button lives inside the header so it stays above the open menu.
 - **Burger X icon transforms:** The three `<span>` lines are 2px tall with `margin: 3px 0`. In flex-column the center-to-center distance between spans is **8px** (2px height + 3px bottom margin + 3px top margin). So `translateY(8px)` / `translateY(-8px)` moves spans 1 and 3 to overlap span 2's center.
 - **Lazy loading images:** Use `data-src` (and optional `data-srcset`) instead of `src` for lazy-loaded images. The `.loaded` class is added after the image loads.
+- **No inline grid overrides on mobile:** Never use inline `style="grid-template-columns: repeat(N, 1fr)"` — it overrides CSS media queries. Use CSS classes instead (e.g., `.steps-connected` for 3-column grids).
 
 ### Forms → WhatsApp
 
