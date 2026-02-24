@@ -1951,7 +1951,90 @@ img[data-src].loaded {
 }
 
 /* ------------------------------------------------------------
-   27. Print Styles
+   27. Scroll Animations
+   ------------------------------------------------------------ */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children in grids */
+.animate-on-scroll.animated .advantage-item,
+.animate-on-scroll.animated .catalog-card,
+.animate-on-scroll.animated .step-item,
+.animate-on-scroll.animated .product-feature,
+.animate-on-scroll.animated .portfolio-card,
+.animate-on-scroll.animated .blog-card {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.animate-on-scroll.animated .advantage-item:nth-child(1),
+.animate-on-scroll.animated .catalog-card:nth-child(1),
+.animate-on-scroll.animated .step-item:nth-child(1),
+.animate-on-scroll.animated .product-feature:nth-child(1),
+.animate-on-scroll.animated .portfolio-card:nth-child(1),
+.animate-on-scroll.animated .blog-card:nth-child(1) { animation-delay: 0s; }
+
+.animate-on-scroll.animated .advantage-item:nth-child(2),
+.animate-on-scroll.animated .catalog-card:nth-child(2),
+.animate-on-scroll.animated .step-item:nth-child(2),
+.animate-on-scroll.animated .product-feature:nth-child(2),
+.animate-on-scroll.animated .portfolio-card:nth-child(2),
+.animate-on-scroll.animated .blog-card:nth-child(2) { animation-delay: 0.1s; }
+
+.animate-on-scroll.animated .advantage-item:nth-child(3),
+.animate-on-scroll.animated .catalog-card:nth-child(3),
+.animate-on-scroll.animated .step-item:nth-child(3),
+.animate-on-scroll.animated .product-feature:nth-child(3),
+.animate-on-scroll.animated .portfolio-card:nth-child(3),
+.animate-on-scroll.animated .blog-card:nth-child(3) { animation-delay: 0.2s; }
+
+.animate-on-scroll.animated .advantage-item:nth-child(4),
+.animate-on-scroll.animated .catalog-card:nth-child(4),
+.animate-on-scroll.animated .step-item:nth-child(4),
+.animate-on-scroll.animated .product-feature:nth-child(4),
+.animate-on-scroll.animated .portfolio-card:nth-child(4),
+.animate-on-scroll.animated .blog-card:nth-child(4) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .animate-on-scroll.animated .advantage-item,
+  .animate-on-scroll.animated .catalog-card,
+  .animate-on-scroll.animated .step-item,
+  .animate-on-scroll.animated .product-feature,
+  .animate-on-scroll.animated .portfolio-card,
+  .animate-on-scroll.animated .blog-card {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* ------------------------------------------------------------
+   28. Print Styles
    ------------------------------------------------------------ */
 @media print {
   .header,
