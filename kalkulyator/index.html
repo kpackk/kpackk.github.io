@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru" data-depth="1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta -->
+  <title>Калькулятор стоимости штор в Дубае | Solara Design</title>
+  <meta name="description" content="Рассчитайте стоимость штор и жалюзи онлайн. Калькулятор цен на шторы в Дубае от Solara Design.">
+  <meta name="keywords" content="калькулятор штор дубай, стоимость штор дубай, цена штор дубай, расчёт штор онлайн">
+
+  <!-- Geo -->
+  <meta name="geo.region" content="AE-DU">
+  <meta name="geo.placename" content="Dubai">
+  <meta name="geo.position" content="25.2048;55.2708">
+  <meta name="ICBM" content="25.2048, 55.2708">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Калькулятор стоимости штор в Дубае | Solara Design">
+  <meta property="og:description" content="Рассчитайте стоимость штор и жалюзи онлайн. Калькулятор цен на шторы в Дубае от Solara Design.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://solaradesign.ae/kalkulyator/">
+
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="ru" href="https://solaradesign.ae/kalkulyator/">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/styles.css">
+
+  <!-- Page-specific label styles -->
+  <style>
+    #calculator label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: var(--color-text-light);
+    }
+  </style>
+
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://solaradesign.ae/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Калькулятор",
+        "item": "https://solaradesign.ae/kalkulyator/"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ============================================================
+       Header (loaded dynamically by components.js)
+       ============================================================ -->
+  <div id="site-header"></div>
+
+
+  <!-- ============================================================
+       Breadcrumbs
+       ============================================================ -->
+  <div class="breadcrumbs">
+    <div class="container">
+      <a href="/">Главная</a> <span>/</span> Калькулятор
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       Hero Section
+       ============================================================ -->
+  <section class="product-hero" style="margin-top:0; background: linear-gradient(135deg, #3A3028 0%, #5C4A32 50%, #3A3028 100%);">
+    <div class="hero-overlay"></div>
+    <div class="container product-hero-content">
+      <h1>Калькулятор стоимости штор</h1>
+      <p class="section-subtitle" style="text-align:left; color: rgba(255,255,255,0.85); margin: 0;">Рассчитайте примерную стоимость штор или жалюзи для ваших окон</p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       Calculator Form
+       ============================================================ -->
+  <section class="section">
+    <div class="container">
+      <div style="max-width:600px;margin:0 auto">
+        <div id="calculator">
+
+          <!-- Product type select -->
+          <div class="form-group">
+            <label for="calc-type">Тип продукта</label>
+            <select id="calc-type" class="form-input">
+              <option value="tyul" data-price="150">Тюль</option>
+              <option value="blekaut" data-price="200">Блэкаут шторы</option>
+              <option value="den-noch" data-price="180">Шторы день-ночь</option>
+              <option value="rimskie" data-price="250">Римские шторы</option>
+              <option value="rulonnye" data-price="120">Рулонные шторы</option>
+              <option value="vertikalnye" data-price="100">Вертикальные жалюзи</option>
+              <option value="gorizontalnye" data-price="130">Горизонтальные жалюзи</option>
+            </select>
+          </div>
+
+          <!-- Width input -->
+          <div class="form-group">
+            <label for="calc-width">Ширина окна (м)</label>
+            <input type="number" id="calc-width" class="form-input" min="0.5" max="10" step="0.1" value="2.0">
+          </div>
+
+          <!-- Height input -->
+          <div class="form-group">
+            <label for="calc-height">Высота окна (м)</label>
+            <input type="number" id="calc-height" class="form-input" min="0.5" max="5" step="0.1" value="2.5">
+          </div>
+
+          <!-- Fabric type select -->
+          <div class="form-group">
+            <label for="calc-fabric">Тип ткани</label>
+            <select id="calc-fabric" class="form-input">
+              <option value="standard" data-mult="1">Стандартная</option>
+              <option value="premium" data-mult="1.5">Премиум</option>
+              <option value="luxury" data-mult="2.2">Люкс (натуральная)</option>
+            </select>
+          </div>
+
+          <!-- Motorization checkbox -->
+          <div class="form-group" style="display:flex;align-items:center;gap:12px">
+            <input type="checkbox" id="calc-motor" style="width:20px;height:20px">
+            <label for="calc-motor" style="margin-bottom:0">Моторизация (+800 AED)</label>
+          </div>
+
+          <!-- Number of windows -->
+          <div class="form-group">
+            <label for="calc-windows">Количество окон</label>
+            <input type="number" id="calc-windows" class="form-input" min="1" max="20" value="1">
+          </div>
+
+          <!-- Calculate button -->
+          <button id="calc-btn" class="btn btn-primary" style="width:100%;margin-top:16px">Рассчитать</button>
+
+          <!-- Result -->
+          <div id="calc-result" style="display:none;margin-top:24px;padding:24px;background:var(--color-bg-warm);border-radius:4px;text-align:center">
+            <p style="font-size:14px;color:var(--color-text-light)">Примерная стоимость:</p>
+            <p id="calc-price" style="font-size:36px;font-weight:700;color:var(--color-accent);margin:8px 0"></p>
+            <p style="font-size:14px;color:var(--color-text-light)">Включая замер, карниз и установку</p>
+            <a href="https://wa.me/971589408100?text=Здравствуйте! Хочу уточнить стоимость штор." class="btn btn-primary" style="margin-top:16px" target="_blank" rel="noopener">Уточнить в WhatsApp</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       What's Included
+       ============================================================ -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:40px">Что входит в стоимость</h2>
+      <div class="advantages">
+        <div class="advantage-item">
+          <div class="advantage-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 4C13 4 4 13 4 24s9 20 20 20 20-9 20-20S35 4 24 4zm0 36c-8.8 0-16-7.2-16-16S15.2 8 24 8s16 7.2 16 16-7.2 16-16 16zm-2-10l-6-6 2.8-2.8L22 24.4l8.2-8.2L33 19 22 30z" fill="currentColor"/></svg>
+          </div>
+          <h4>Бесплатный выезд замерщика</h4>
+          <p>Специалист приедет к вам бесплатно в удобное время</p>
+        </div>
+        <div class="advantage-item">
+          <div class="advantage-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M38 6H10c-2.2 0-4 1.8-4 4v28c0 2.2 1.8 4 4 4h28c2.2 0 4-1.8 4-4V10c0-2.2-1.8-4-4-4zm0 32H10V10h28v28zM14 18h20v4H14v-4zm0 8h14v4H14v-4z" fill="currentColor"/></svg>
+          </div>
+          <h4>Карниз или крепление</h4>
+          <p>Карниз подбирается под ваш интерьер и входит в цену</p>
+        </div>
+        <div class="advantage-item">
+          <div class="advantage-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M40 8H8c-2.2 0-4 1.8-4 4v2h40v-2c0-2.2-1.8-4-4-4zM4 34c0 2.2 1.8 4 4 4h28v-8H4v4zm34 4h2c2.2 0 4-1.8 4-4V18H4v8h32v12z" fill="currentColor"/></svg>
+          </div>
+          <h4>Пошив по вашим размерам</h4>
+          <p>Индивидуальный пошив штор за 4-5 рабочих дней</p>
+        </div>
+        <div class="advantage-item">
+          <div class="advantage-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M40 16h-6V8H14v8H8c-2.2 0-4 1.8-4 4v12h8v8h24v-8h8V20c0-2.2-1.8-4-4-4zM18 12h12v4H18v-4zm14 28H16v-10h16v10zm8-12H8V20h32v8z" fill="currentColor"/></svg>
+          </div>
+          <h4>Доставка и установка</h4>
+          <p>Профессиональный монтаж с гарантией качества</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       Note About Estimate
+       ============================================================ -->
+  <section class="section">
+    <div class="container" style="text-align:center;max-width:600px">
+      <p>Расчёт является ориентировочным. Точная стоимость зависит от выбранной ткани и особенностей монтажа. Для точного расчёта закажите бесплатный замер.</p>
+      <a href="/#order" class="btn btn-outline" style="margin-top:24px">Заказать замер</a>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       Footer (loaded dynamically by components.js)
+       ============================================================ -->
+  <div id="site-footer"></div>
+
+
+  <!-- ============================================================
+       WhatsApp Floating Button
+       ============================================================ -->
+  <a href="https://wa.me/971589408100" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp" data-tooltip="Написать в WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+
+  <!-- JS -->
+  <script src="../assets/js/components.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/calculator.js"></script>
+</body>
+</html>
