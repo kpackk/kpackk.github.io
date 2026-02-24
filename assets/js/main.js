@@ -12,10 +12,15 @@
   /* ----------------------------------------------------------
      1. Mobile Menu Toggle
      ---------------------------------------------------------- */
+  var mobileMenuInitialized = false;
+
   function initMobileMenu() {
+    if (mobileMenuInitialized) return;
     var burger = document.querySelector('.burger');
     var mobileMenu = document.querySelector('.mobile-menu');
     if (!burger || !mobileMenu) return;
+
+    mobileMenuInitialized = true;
 
     burger.addEventListener('click', function () {
       burger.classList.toggle('active');

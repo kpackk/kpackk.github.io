@@ -334,7 +334,7 @@ p:last-child {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 1100;
   background-color: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -520,7 +520,7 @@ p:last-child {
 }
 
 .burger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(4px, 4px);
+  transform: translateY(8px) rotate(45deg);
 }
 
 .burger.active span:nth-child(2) {
@@ -528,7 +528,7 @@ p:last-child {
 }
 
 .burger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(4px, -4px);
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 /* ------------------------------------------------------------
@@ -646,7 +646,8 @@ p:last-child {
   position: relative;
   z-index: 3;
   max-width: 680px;
-  padding: var(--space-4xl) 0;
+  padding-top: var(--space-4xl);
+  padding-bottom: var(--space-4xl);
   color: var(--color-white);
 }
 
@@ -1711,6 +1712,11 @@ img[data-src].loaded {
     --container-padding: 1rem;
   }
 
+  /* Header - hide WhatsApp button on mobile (available via float) */
+  .header-contacts .btn {
+    display: none;
+  }
+
   /* All grids to 1 column */
   .grid-2,
   .grid-3,
@@ -1718,12 +1724,52 @@ img[data-src].loaded {
     grid-template-columns: 1fr;
   }
 
+  /* Advantages - 2 columns on mobile */
   .advantages {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
   }
 
+  .advantage-item {
+    padding: var(--space-lg) var(--space-sm);
+  }
+
+  .advantage-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: var(--space-sm);
+  }
+
+  .advantage-icon img,
+  .advantage-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .advantage-item h4 {
+    font-size: var(--text-base);
+  }
+
+  .advantage-item p {
+    font-size: var(--text-xs);
+  }
+
+  /* Catalog - 2 columns on mobile */
   .catalog-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  .catalog-card {
+    aspect-ratio: 3 / 4;
+  }
+
+  .catalog-card-title {
+    font-size: var(--text-base);
+  }
+
+  .catalog-card-desc {
+    font-size: var(--text-xs);
   }
 
   .portfolio-grid {
@@ -1731,8 +1777,23 @@ img[data-src].loaded {
     gap: var(--space-sm);
   }
 
+  /* Steps - 2 columns on mobile */
   .steps {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  .step-item {
+    padding: var(--space-md);
+  }
+
+  .step-item::before {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-sm);
+  }
+
+  .step-item h4 {
+    font-size: var(--text-base);
   }
 
   .footer-grid {
@@ -1765,39 +1826,53 @@ img[data-src].loaded {
     font-size: var(--text-xl);
   }
 
-  /* Sections */
+  /* Sections - reduced padding */
   .section,
   .section-alt,
   .section-warm,
   .section-dark {
-    padding: var(--space-3xl) 0;
+    padding: var(--space-2xl) 0;
   }
 
   .section-subtitle {
     font-size: var(--text-base);
-    margin-bottom: var(--space-2xl);
+    margin-bottom: var(--space-xl);
   }
 
   /* Hero */
   .hero {
-    min-height: 85vh;
+    min-height: auto;
+  }
+
+  .hero-content {
+    padding-top: calc(var(--header-height) + var(--space-xl));
+    padding-bottom: var(--space-2xl);
   }
 
   .hero-content h1 {
-    font-size: var(--text-3xl);
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-md);
   }
 
   .hero-content p {
-    font-size: var(--text-base);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-lg);
   }
 
   .hero-buttons {
     flex-direction: column;
+    gap: var(--space-sm);
   }
 
   .hero-buttons .btn {
     width: 100%;
     justify-content: center;
+  }
+
+  /* Catalog card - last odd item full width */
+  .catalog-grid .catalog-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 9;
   }
 
   /* Buttons */
@@ -1832,15 +1907,15 @@ img[data-src].loaded {
 
   /* WhatsApp button */
   .whatsapp-float {
-    width: 52px;
-    height: 52px;
-    bottom: 20px;
-    right: 20px;
+    width: 48px;
+    height: 48px;
+    bottom: 16px;
+    right: 16px;
   }
 
   .whatsapp-float svg {
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
   }
 
   .whatsapp-float::before {
@@ -1849,11 +1924,16 @@ img[data-src].loaded {
 
   /* Product page */
   .product-hero {
-    min-height: 300px;
+    min-height: 280px;
+  }
+
+  .product-hero .container {
+    padding-left: var(--container-padding) !important;
+    padding-right: var(--container-padding) !important;
   }
 
   .product-hero-content h1 {
-    font-size: var(--text-3xl);
+    font-size: var(--text-2xl);
   }
 
   /* Breadcrumbs */
@@ -1863,11 +1943,6 @@ img[data-src].loaded {
 
   .breadcrumbs-list {
     font-size: var(--text-xs);
-  }
-
-  /* Catalog card */
-  .catalog-card {
-    aspect-ratio: 3 / 3.5;
   }
 }
 

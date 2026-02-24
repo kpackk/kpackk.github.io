@@ -52,6 +52,13 @@ Single CSS file with custom properties:
 
 All vanilla ES6+. Total ~354 lines.
 
+### Known Gotchas
+
+- **`component:loaded` fires twice** — once after header loads, once after footer. Any listener on this event runs 2×. Functions like `initMobileMenu()` use a `mobileMenuInitialized` flag to prevent duplicate event handlers.
+- **z-index stacking:** header `1100` > mobile-menu `1050`. The burger button lives inside the header so it stays above the open menu.
+- **Burger X icon transforms:** The three `<span>` lines are 2px tall with `margin: 3px 0`. In flex-column the center-to-center distance between spans is **8px** (2px height + 3px bottom margin + 3px top margin). So `translateY(8px)` / `translateY(-8px)` moves spans 1 and 3 to overlap span 2's center.
+- **Lazy loading images:** Use `data-src` (and optional `data-srcset`) instead of `src` for lazy-loaded images. The `.loaded` class is added after the image loads.
+
 ### Forms → WhatsApp
 
 No backend. Forms with `data-whatsapp-form` attribute collect inputs with `data-label` attributes and open `wa.me/971589408100` with a pre-filled message. Phone: +971 58 940 8100.
@@ -83,6 +90,24 @@ Every page includes:
 - Schema.org JSON-LD: **LocalBusiness** (root), **BreadcrumbList** + **FAQPage** + **Product** (product pages), **Article** (blog posts)
 
 Domain: `solaradesign.ae` (configured in sitemap.xml and canonical URLs).
+
+## Public Access (Tunneling)
+
+For sharing the local site externally (e.g., with colleagues or for mobile testing):
+
+```bash
+# Option 1: Serveo (SSH-based, no install)
+ssh -R 80:localhost:8889 serveo.net
+
+# Option 2: Cloudflare Tunnel
+cloudflared tunnel --url http://localhost:8889
+```
+
+## Responsive Layout
+
+- **Desktop (>960px):** Full multi-column grids, all header elements visible
+- **Tablet (≤960px):** Burger menu appears, header nav hidden, 2-column grids
+- **Mobile (≤640px):** WhatsApp button hidden from header (available in mobile menu), advantages/catalog/steps use 2-column grids, reduced padding (`--container-padding: 1rem`), catalog last odd card spans full width with 16:9 aspect ratio
 
 ## Adding New Pages
 
