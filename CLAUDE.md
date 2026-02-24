@@ -75,19 +75,29 @@ No backend. Forms with `data-whatsapp-form` attribute collect inputs with `data-
 ## Page Types & URL Structure
 
 ```
-/                          → index.html (depth=0) — Homepage
-/shtory/                   → Hub page (depth=1) — All curtains
-/shtory/blekaut/           → Product page (depth=2) — Blackout curtains
-/zhalyuzi/                 → Hub page (depth=1) — All blinds
-/zhalyuzi/rulonnye/        → Product page (depth=2) — Roller blinds
-/motorizaciya/             → Landing page (depth=1)
-/kalkulyator/              → Calculator (depth=1)
-/blog/                     → Blog listing (depth=1)
-/blog/kak-vybrat-shtory/   → Article (depth=2)
-/portfolio/, /o-nas/, /kontakty/ → Info pages (depth=1)
+/                                          → index.html (depth=0) — Homepage
+/shtory/                                   → Hub page (depth=1) — All curtains
+  /shtory/blekaut/                         → Product (depth=2) — Blackout
+  /shtory/tyul/                            → Product (depth=2) — Tulle
+  /shtory/den-noch/                        → Product (depth=2) — Day-night
+  /shtory/rimskie/                         → Product (depth=2) — Roman
+  /shtory/shtory-na-zakaz/                 → Product (depth=2) — Custom
+/zhalyuzi/                                 → Hub page (depth=1) — All blinds
+  /zhalyuzi/rulonnye/                      → Product (depth=2) — Roller
+  /zhalyuzi/vertikalnye/                   → Product (depth=2) — Vertical
+  /zhalyuzi/gorizontalnye/                 → Product (depth=2) — Horizontal
+/motorizaciya/                             → Landing page (depth=1)
+/kalkulyator/                              → Calculator (depth=1)
+/blog/                                     → Blog listing (depth=1)
+  /blog/kak-vybrat-shtory-v-dubae/         → Article (depth=2)
+  /blog/blekaut-shtory-dubay/              → Article (depth=2)
+  /blog/motorizirovannye-shtory-smart-home/ → Article (depth=2)
+/portfolio/                                → Portfolio (depth=1)
+/o-nas/                                    → About (depth=1)
+/kontakty/                                 → Contacts (depth=1)
 ```
 
-Every page is `{section}/index.html`. Asset references use relative paths based on depth (`../../assets/css/styles.css` for depth=2).
+20 pages total. Every page is `{section}/index.html`. Asset references use relative paths based on depth (`../../assets/css/styles.css` for depth=2).
 
 ## SEO Structure
 
@@ -98,7 +108,23 @@ Every page includes:
 - `hreflang="ru"` (prepared for future EN version)
 - Schema.org JSON-LD: **LocalBusiness** (root), **BreadcrumbList** + **FAQPage** + **Product** (product pages), **Article** (blog posts)
 
-Domain: `solaradesign.ae` (configured in sitemap.xml and canonical URLs).
+Domain: `solaradesign.ae` (configured in sitemap.xml, canonical URLs, and robots.txt).
+
+**Important:** All internal links use absolute paths (`/shtory/`, `/zhalyuzi/`). The site must be served from root — never from a subdirectory (e.g., `example.com/subfolder/`), otherwise navigation breaks.
+
+## Deployment
+
+**Live site:** https://kpackk.github.io/ (GitHub Pages)
+
+**Repository:** `https://github.com/kpackk/kpackk.github.io.git` — uses the `username.github.io` naming convention so the site is served from root (not a subdirectory). All navigation uses absolute paths (`/shtory/`, `/zhalyuzi/`), which only work when served from root.
+
+**Deploy:** Push to `main` branch → GitHub Pages auto-deploys.
+
+```bash
+git push origin main
+```
+
+**Netlify config** (`netlify.toml`) exists for optional Netlify deployment with 404 redirect and cache headers, but is not currently active.
 
 ## Public Access (Tunneling)
 

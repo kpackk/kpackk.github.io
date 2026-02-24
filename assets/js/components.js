@@ -45,6 +45,10 @@
    *   depth 2 => prefix = "../../"    (e.g. shtory/tyul/index.html)
    */
   function getPathPrefix() {
+    // data-basepath overrides depth calculation (used by 404.html which can be served from any URL)
+    var basepath = document.documentElement.getAttribute('data-basepath');
+    if (basepath) return basepath;
+
     var depth = parseInt(document.documentElement.getAttribute('data-depth') || '0', 10);
     if (depth <= 0) return '';
     var prefix = '';
