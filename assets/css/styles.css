@@ -931,6 +931,10 @@ p:last-child {
   color: var(--color-text-light);
 }
 
+.steps-connected {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 /* Connector line between steps */
 .steps-connected .step-item:not(:last-child)::after {
   content: '';
