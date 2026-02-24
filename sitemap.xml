@@ -135,6 +135,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://solaradesign.ae/blog/trendy-shtor-2026/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://solaradesign.ae/blog/uhod-za-shtorami-v-dubae/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
   <!-- English Version -->
   <url>
