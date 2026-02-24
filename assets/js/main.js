@@ -245,6 +245,15 @@
     }, { threshold: 0.01 });
 
     elements.forEach(function (el) { observer.observe(el); });
+
+    // Failsafe: reveal all elements after 1.5s in case IO doesn't trigger
+    setTimeout(function () {
+      elements.forEach(function (el) {
+        if (!el.classList.contains('animated')) {
+          el.classList.add('animated');
+        }
+      });
+    }, 1500);
   }
 
   /* ----------------------------------------------------------
