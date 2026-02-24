@@ -248,6 +248,57 @@
   }
 
   /* ----------------------------------------------------------
+     Lightbox for Portfolio
+     ---------------------------------------------------------- */
+  function initLightbox() {
+    // Create lightbox element once
+    var lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = '<span class="lightbox-close">&times;</span><img class="lightbox-img" src="" alt=""><div class="lightbox-caption"></div>';
+    document.body.appendChild(lightbox);
+
+    var img = lightbox.querySelector('.lightbox-img');
+    var caption = lightbox.querySelector('.lightbox-caption');
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    lightbox.addEventListener('click', closeLightbox);
+    img.addEventListener('click', function (e) { e.stopPropagation(); });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Delegate clicks on portfolio items
+    document.addEventListener('click', function (e) {
+      var item = e.target.closest('.portfolio-item');
+      if (!item) return;
+
+      var bg = item.style.backgroundImage;
+      var match = bg.match(/url\(["']?([^"')]+)["']?\)/);
+      if (!match) return;
+
+      var hoverText = item.querySelector('.portfolio-hover-text span');
+      img.src = match[1];
+      caption.textContent = hoverText ? hoverText.textContent : '';
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+
+  /* ----------------------------------------------------------
+     Service Worker Registration
+     ---------------------------------------------------------- */
+  function registerServiceWorker() {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(function () {});
+    }
+  }
+
+  /* ----------------------------------------------------------
      Initialise Everything
      ---------------------------------------------------------- */
   function init() {
@@ -258,6 +309,8 @@
     initWhatsAppForm();
     initSmoothScroll();
     initScrollAnimations();
+    initLightbox();
+    registerServiceWorker();
   }
 
   // Run on DOMContentLoaded

@@ -2034,7 +2034,71 @@ img[data-src].loaded {
 }
 
 /* ------------------------------------------------------------
-   28. Print Styles
+   28. Lightbox
+   ------------------------------------------------------------ */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.92);
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+  display: flex;
+  opacity: 1;
+}
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-xl);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  color: #fff;
+  font-size: 36px;
+  font-weight: 300;
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.8;
+  transition: opacity var(--transition-fast);
+  z-index: 2001;
+}
+
+.lightbox-close:hover {
+  opacity: 1;
+}
+
+.lightbox-caption {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: var(--text-sm);
+  text-align: center;
+  max-width: 600px;
+  opacity: 0.9;
+}
+
+/* Make portfolio items clickable */
+.portfolio-item {
+  cursor: zoom-in;
+}
+
+/* ------------------------------------------------------------
+   29. Print Styles
    ------------------------------------------------------------ */
 @media print {
   .header,
