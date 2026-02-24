@@ -82,22 +82,37 @@ No backend. Forms with `data-whatsapp-form` attribute collect inputs with `data-
   /shtory/den-noch/                        → Product (depth=2) — Day-night
   /shtory/rimskie/                         → Product (depth=2) — Roman
   /shtory/shtory-na-zakaz/                 → Product (depth=2) — Custom
+  /shtory/plisse/                          → Product (depth=2) — Pleated
+  /shtory/yaponskie/                       → Product (depth=2) — Japanese panels
+  /shtory/francuzskie/                     → Product (depth=2) — French curtains
 /zhalyuzi/                                 → Hub page (depth=1) — All blinds
   /zhalyuzi/rulonnye/                      → Product (depth=2) — Roller
   /zhalyuzi/vertikalnye/                   → Product (depth=2) — Vertical
   /zhalyuzi/gorizontalnye/                 → Product (depth=2) — Horizontal
+  /zhalyuzi/derevyannye/                   → Product (depth=2) — Wooden
+  /zhalyuzi/bambukovye/                    → Product (depth=2) — Bamboo
 /motorizaciya/                             → Landing page (depth=1)
 /kalkulyator/                              → Calculator (depth=1)
+/akcii/                                    → Promotions (depth=1)
+/otzyvy/                                   → Reviews (depth=1)
 /blog/                                     → Blog listing (depth=1)
   /blog/kak-vybrat-shtory-v-dubae/         → Article (depth=2)
   /blog/blekaut-shtory-dubay/              → Article (depth=2)
   /blog/motorizirovannye-shtory-smart-home/ → Article (depth=2)
-/portfolio/                                → Portfolio (depth=1)
+  /blog/rulonnye-shtory-ili-zhalyuzi/      → Article (depth=2)
+  /blog/shtory-dlya-spalni/                → Article (depth=2)
+  /blog/ukhod-za-shtorami-dubay/           → Article (depth=2)
+  /blog/uhod-za-shtorami-v-dubae/          → Article (depth=2)
+  /blog/trendy-shtor-2026/                 → Article (depth=2)
+  /blog/sravnenie-tkanej/                  → Article (depth=2)
+  /blog/zhalyuzi-dlya-ofisa/               → Article (depth=2)
+  /blog/umnyj-dom-motorizaciya/            → Article (depth=2)
+/portfolio/                                → Portfolio (depth=1) — with JS filters
 /o-nas/                                    → About (depth=1)
 /kontakty/                                 → Contacts (depth=1)
 ```
 
-20 pages total. Every page is `{section}/index.html`. Asset references use relative paths based on depth (`../../assets/css/styles.css` for depth=2).
+34+ pages total. Every page is `{section}/index.html`. Asset references use relative paths based on depth (`../../assets/css/styles.min.css` for depth=2).
 
 ## SEO Structure
 

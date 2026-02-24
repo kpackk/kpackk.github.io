@@ -39,6 +39,21 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://solaradesign.ae/shtory/plisse/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://solaradesign.ae/shtory/yaponskie/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://solaradesign.ae/shtory/francuzskie/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
   <!-- Жалюзи -->
   <url>
@@ -58,6 +73,16 @@
   </url>
   <url>
     <loc>https://solaradesign.ae/zhalyuzi/gorizontalnye/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://solaradesign.ae/zhalyuzi/derevyannye/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://solaradesign.ae/zhalyuzi/bambukovye/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -104,6 +129,20 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Акции -->
+  <url>
+    <loc>https://solaradesign.ae/akcii/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Отзывы -->
+  <url>
+    <loc>https://solaradesign.ae/otzyvy/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Блог — статьи -->
   <url>
     <loc>https://solaradesign.ae/blog/kak-vybrat-shtory-v-dubae/</loc>
@@ -142,6 +181,21 @@
   </url>
   <url>
     <loc>https://solaradesign.ae/blog/uhod-za-shtorami-v-dubae/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://solaradesign.ae/blog/sravnenie-tkanej/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://solaradesign.ae/blog/zhalyuzi-dlya-ofisa/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://solaradesign.ae/blog/umnyj-dom-motorizaciya/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
