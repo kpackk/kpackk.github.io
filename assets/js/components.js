@@ -22,7 +22,7 @@
     window.gtag = gtag;
   })('G-FWB7K5M1LH');
 
-  // Yandex.Metrica — replace XXXXXXXXX with your counter ID
+  // Yandex.Metrica
   (function(id){
     if (!id || id === 'XXXXXXXXX') return;
     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -31,7 +31,7 @@
     k=e.createElement(t);a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a);
     })(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
     ym(id, 'init', {clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
-  })('XXXXXXXXX');
+  })('107004207');
 
   /**
    * Fetch an HTML fragment and inject it into the element with the given ID.
