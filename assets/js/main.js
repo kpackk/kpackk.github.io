@@ -403,6 +403,44 @@
   }
 
   /* ----------------------------------------------------------
+     7. GA4 Event Tracking
+     ---------------------------------------------------------- */
+  function initGA4Tracking() {
+    if (typeof window.gtag !== 'function') return;
+
+    // Track WhatsApp link clicks
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href*="wa.me"]');
+      if (!link) return;
+      window.gtag('event', 'whatsapp_click', {
+        event_category: 'engagement',
+        event_label: link.href,
+        link_url: link.href
+      });
+    });
+
+    // Track phone call clicks
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href^="tel:"]');
+      if (!link) return;
+      window.gtag('event', 'phone_call', {
+        event_category: 'engagement',
+        event_label: link.href.replace('tel:', '')
+      });
+    });
+
+    // Track WhatsApp form submissions
+    document.addEventListener('submit', function (e) {
+      var form = e.target.closest('[data-whatsapp-form]');
+      if (!form) return;
+      window.gtag('event', 'form_submit_whatsapp', {
+        event_category: 'engagement',
+        event_label: document.title
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
      Initialise Everything
      ---------------------------------------------------------- */
   function init() {
@@ -414,6 +452,7 @@
     initSmoothScroll();
     initScrollAnimations();
     initLightbox();
+    initGA4Tracking();
     registerServiceWorker();
   }
 
