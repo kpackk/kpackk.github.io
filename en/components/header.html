@@ -1,7 +1,7 @@
-<header class="header">
+<header class="header" role="banner">
   <div class="container header-inner">
-    <a href="/en/" class="header-logo">SOLARA <span>Design</span></a>
-    <nav class="header-nav">
+    <a href="/en/" class="header-logo" aria-label="Solara Design — Home">SOLARA <span>Design</span></a>
+    <nav class="header-nav" aria-label="Main navigation">
       <a href="/en/curtains/">Curtains</a>
       <a href="/en/blinds/">Blinds</a>
       <a href="/en/motorization/">Motorization</a>
@@ -10,20 +10,20 @@
       <a href="/en/promotions/">Promotions</a>
       <a href="/en/about/">About</a>
       <a href="/en/contacts/">Contacts</a>
-      <a href="/" class="header-lang">RU</a>
+      <a href="/" class="header-lang" aria-label="Переключить на русский">RU</a>
     </nav>
     <div class="header-contacts">
-      <a href="tel:+971589408100" class="header-phone">+971 58 940 8100</a>
-      <a href="https://wa.me/971589408100" class="btn btn-primary" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="tel:+971589408100" class="header-phone" aria-label="Call: +971 58 940 8100">+971 58 940 8100</a>
+      <a href="https://wa.me/971589408100" class="btn btn-primary" target="_blank" rel="noopener" aria-label="Message on WhatsApp">WhatsApp</a>
     </div>
-    <div class="burger" aria-label="Menu">
+    <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
-    </div>
+    </button>
   </div>
 </header>
 
-<div class="mobile-menu">
-  <nav class="mobile-menu-nav">
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile menu">
+  <nav class="mobile-menu-nav" aria-label="Mobile navigation">
     <a href="/en/curtains/">Curtains</a>
     <a href="/en/blinds/">Blinds</a>
     <a href="/en/motorization/">Motorization</a>
@@ -32,12 +32,12 @@
     <a href="/en/promotions/">Promotions</a>
     <a href="/en/about/">About</a>
     <a href="/en/contacts/">Contacts</a>
-    <a href="/" class="header-lang">RU</a>
+    <a href="/" class="header-lang" aria-label="Переключить на русский">RU</a>
   </nav>
   <div class="mobile-menu-contacts">
-    <a href="tel:+971589408100">+971 58 940 8100</a>
+    <a href="tel:+971589408100" aria-label="Call: +971 58 940 8100">+971 58 940 8100</a>
   </div>
   <div class="mobile-menu-btn">
-    <a href="https://wa.me/971589408100" class="btn btn-primary" target="_blank" rel="noopener">Message on WhatsApp</a>
+    <a href="https://wa.me/971589408100" class="btn btn-primary" target="_blank" rel="noopener" aria-label="Message on WhatsApp">Message on WhatsApp</a>
   </div>
 </div>

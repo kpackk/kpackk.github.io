@@ -23,9 +23,10 @@
     mobileMenuInitialized = true;
 
     burger.addEventListener('click', function () {
-      burger.classList.toggle('active');
+      var isOpen = burger.classList.toggle('active');
       mobileMenu.classList.toggle('active');
       document.body.classList.toggle('menu-open');
+      burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
     // Close menu when a link is clicked
@@ -35,6 +36,7 @@
         burger.classList.remove('active');
         mobileMenu.classList.remove('active');
         document.body.classList.remove('menu-open');
+        burger.setAttribute('aria-expanded', 'false');
       });
     });
   }
