@@ -1618,6 +1618,16 @@ img[data-src].loaded {
   opacity: 1;
 }
 
+/* Language Switcher */
+.header-lang {
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.header-lang:hover { opacity: 1; }
+
 /* ------------------------------------------------------------
    25. Responsive - Tablet (max-width: 960px)
    ------------------------------------------------------------ */
