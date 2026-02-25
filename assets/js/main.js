@@ -257,42 +257,137 @@
   }
 
   /* ----------------------------------------------------------
-     Lightbox for Portfolio
+     Lightbox for Portfolio & Product Galleries
      ---------------------------------------------------------- */
   function initLightbox() {
-    // Create lightbox element once
     var lightbox = document.createElement('div');
     lightbox.className = 'lightbox';
-    lightbox.innerHTML = '<span class="lightbox-close">&times;</span><img class="lightbox-img" src="" alt=""><div class="lightbox-caption"></div>';
+    lightbox.innerHTML =
+      '<span class="lightbox-close">&times;</span>' +
+      '<button class="lightbox-prev" aria-label="Previous">&#10094;</button>' +
+      '<button class="lightbox-next" aria-label="Next">&#10095;</button>' +
+      '<img class="lightbox-img" src="" alt="">' +
+      '<div class="lightbox-caption"></div>' +
+      '<div class="lightbox-counter"></div>';
     document.body.appendChild(lightbox);
 
     var img = lightbox.querySelector('.lightbox-img');
     var caption = lightbox.querySelector('.lightbox-caption');
+    var counter = lightbox.querySelector('.lightbox-counter');
+    var prevBtn = lightbox.querySelector('.lightbox-prev');
+    var nextBtn = lightbox.querySelector('.lightbox-next');
+
+    var galleryImages = [];
+    var currentIndex = 0;
+
+    function getImageUrl(el) {
+      var imgTag = el.querySelector('img');
+      if (imgTag) return imgTag.src || imgTag.getAttribute('data-src');
+      var bg = el.style.backgroundImage;
+      var match = bg.match(/url\(["']?([^"')]+)["']?\)/);
+      return match ? match[1] : null;
+    }
+
+    function showImage(index) {
+      if (index < 0 || index >= galleryImages.length) return;
+      currentIndex = index;
+      img.src = galleryImages[index].url;
+      caption.textContent = galleryImages[index].caption || '';
+      if (galleryImages.length > 1) {
+        counter.textContent = (currentIndex + 1) + ' / ' + galleryImages.length;
+        counter.style.display = '';
+        prevBtn.style.display = '';
+        nextBtn.style.display = '';
+      } else {
+        counter.style.display = 'none';
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+      }
+    }
+
+    function showPrev() {
+      showImage((currentIndex - 1 + galleryImages.length) % galleryImages.length);
+    }
+
+    function showNext() {
+      showImage((currentIndex + 1) % galleryImages.length);
+    }
 
     function closeLightbox() {
       lightbox.classList.remove('active');
       document.body.style.overflow = '';
+      galleryImages = [];
     }
 
     lightbox.addEventListener('click', closeLightbox);
     img.addEventListener('click', function (e) { e.stopPropagation(); });
+    prevBtn.addEventListener('click', function (e) { e.stopPropagation(); showPrev(); });
+    nextBtn.addEventListener('click', function (e) { e.stopPropagation(); showNext(); });
 
     document.addEventListener('keydown', function (e) {
+      if (!lightbox.classList.contains('active')) return;
       if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showPrev();
+      if (e.key === 'ArrowRight') showNext();
     });
 
-    // Delegate clicks on portfolio items
+    // Touch swipe support
+    var touchStartX = 0;
+    var touchEndX = 0;
+
+    lightbox.addEventListener('touchstart', function (e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', function (e) {
+      touchEndX = e.changedTouches[0].screenX;
+      var diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) showNext();
+        else showPrev();
+      }
+    });
+
+    // Delegate clicks on portfolio items (single image)
     document.addEventListener('click', function (e) {
       var item = e.target.closest('.portfolio-item');
       if (!item) return;
 
-      var bg = item.style.backgroundImage;
-      var match = bg.match(/url\(["']?([^"')]+)["']?\)/);
-      if (!match) return;
+      var url = getImageUrl(item);
+      if (!url) return;
 
       var hoverText = item.querySelector('.portfolio-hover-text span');
-      img.src = match[1];
-      caption.textContent = hoverText ? hoverText.textContent : '';
+      galleryImages = [{ url: url, caption: hoverText ? hoverText.textContent : '' }];
+      currentIndex = 0;
+      showImage(0);
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    // Delegate clicks on product gallery items (navigable gallery)
+    document.addEventListener('click', function (e) {
+      var item = e.target.closest('.product-gallery-item');
+      if (!item) return;
+
+      var gallery = item.closest('.product-gallery');
+      if (!gallery) return;
+
+      var items = gallery.querySelectorAll('.product-gallery-item');
+      galleryImages = [];
+      var clickedIndex = 0;
+
+      items.forEach(function (el, i) {
+        var url = getImageUrl(el);
+        if (url) {
+          if (el === item) clickedIndex = galleryImages.length;
+          galleryImages.push({ url: url, caption: '' });
+        }
+      });
+
+      if (!galleryImages.length) return;
+
+      currentIndex = clickedIndex;
+      showImage(currentIndex);
       lightbox.classList.add('active');
       document.body.style.overflow = 'hidden';
     });

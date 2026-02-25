@@ -34,7 +34,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="../../../assets/css/styles.min.css">
+  <style>
+:root{--color-bg:#fff;--color-bg-alt:#F8F8F8;--color-bg-warm:#F5F0EB;--color-text:#2D2D2D;--color-text-light:#6B6B6B;--color-accent:#B8924A;--color-accent-hover:#A07D3A;--color-border:#E5E5E5;--color-white:#fff;--color-black:#1A1A1A;--font-primary:'Montserrat',sans-serif;--font-weight-light:300;--font-weight-regular:400;--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--text-xs:.75rem;--text-sm:.875rem;--text-base:1rem;--text-lg:1.125rem;--text-xl:1.25rem;--text-2xl:1.5rem;--text-3xl:1.875rem;--text-4xl:2.25rem;--text-5xl:3rem;--space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;--space-xl:2rem;--space-2xl:3rem;--space-3xl:4rem;--space-4xl:6rem;--space-5xl:8rem;--container-max:1200px;--container-padding:1.5rem;--header-height:80px;--border-radius:4px;--border-radius-lg:8px;--border-radius-xl:12px;--transition-fast:.2s ease;--transition-base:.3s ease;--transition-slow:.5s ease;--shadow-sm:0 1px 3px rgba(0,0,0,.06);--shadow-md:0 4px 12px rgba(0,0,0,.08)}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{font-family:var(--font-primary);font-weight:var(--font-weight-regular);font-size:var(--text-base);line-height:1.6;color:var(--color-text);background-color:var(--color-bg);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}body.menu-open{overflow:hidden}img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inherit;transition:color var(--transition-fast)}ul,ol{list-style:none}button,input,textarea,select{font-family:inherit;font-size:inherit;border:none;outline:none;background:none}button{cursor:pointer}.container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 var(--container-padding)}h1,h2,h3,h4,h5,h6{font-weight:var(--font-weight-semibold);line-height:1.2;color:var(--color-text)}h1{font-size:var(--text-5xl);letter-spacing:-.02em}h2{font-size:var(--text-4xl);letter-spacing:-.01em}h3{font-size:var(--text-3xl)}p{margin-bottom:var(--space-md);color:var(--color-text-light)}p:last-child{margin-bottom:0}.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-sm);padding:14px 32px;font-size:var(--text-sm);font-weight:var(--font-weight-semibold);text-transform:uppercase;letter-spacing:.08em;border-radius:var(--border-radius);transition:all var(--transition-base);white-space:nowrap;cursor:pointer}.btn-primary{background-color:var(--color-accent);color:var(--color-white);border:2px solid var(--color-accent)}.btn-outline{background-color:transparent;color:var(--color-accent);border:2px solid var(--color-accent)}.btn-white{background-color:var(--color-white);color:var(--color-text);border:2px solid var(--color-white)}.section{padding:var(--space-5xl) 0}.section-alt{padding:var(--space-5xl) 0;background-color:var(--color-bg-alt)}.section-warm{padding:var(--space-5xl) 0;background-color:var(--color-bg-warm)}.section-dark{padding:var(--space-5xl) 0;background-color:var(--color-black);color:var(--color-white)}.section-title{font-size:var(--text-4xl);font-weight:var(--font-weight-semibold);text-align:center;margin-bottom:var(--space-md)}.section-subtitle{font-size:var(--text-lg);color:var(--color-text-light);text-align:center;max-width:640px;margin:0 auto var(--space-3xl);line-height:1.6}.header{position:fixed;top:0;left:0;width:100%;z-index:1100;background-color:rgba(255,255,255,.97);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:all var(--transition-base);border-bottom:1px solid transparent}.header-scrolled{border-bottom-color:var(--color-border);box-shadow:var(--shadow-sm)}.header-inner{display:flex;align-items:center;justify-content:space-between;height:var(--header-height);max-width:var(--container-max);margin:0 auto;padding:0 var(--container-padding)}.header-logo{display:flex;align-items:center;gap:var(--space-sm);font-size:var(--text-xl);font-weight:var(--font-weight-bold);letter-spacing:.05em;text-transform:uppercase;color:var(--color-text);flex-shrink:0}.header-nav{display:flex;align-items:center;gap:var(--space-xl)}.header-nav a{font-size:var(--text-sm);font-weight:var(--font-weight-medium);color:var(--color-text);position:relative;padding:var(--space-xs) 0}.header-contacts .header-phone{font-size:var(--text-sm);font-weight:var(--font-weight-semibold);color:var(--color-text)}.burger{display:none;flex-direction:column;justify-content:center;align-items:center;width:32px;height:32px;cursor:pointer;z-index:1100}.burger span{display:block;width:24px;height:2px;background-color:var(--color-text);transition:all var(--transition-base);margin:3px 0}.mobile-menu{position:fixed;top:0;right:0;width:100%;height:100vh;height:100dvh;background-color:var(--color-white);z-index:1050;transform:translateX(100%);transition:transform var(--transition-base);overflow-y:auto;padding:calc(var(--header-height) + var(--space-xl)) var(--container-padding) var(--space-xl)}.mobile-menu.active{transform:translateX(0)}.hero{position:relative;width:100%;min-height:100vh;min-height:100dvh;display:flex;align-items:center;overflow:hidden}.hero-bg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1}.hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.25) 100%);z-index:2}.hero-content{position:relative;z-index:3;max-width:680px;padding-top:var(--space-4xl);padding-bottom:var(--space-4xl);color:var(--color-white)}.hero-content h1{color:var(--color-white);margin-bottom:var(--space-lg)}.hero-content p{font-size:var(--text-lg);color:rgba(255,255,255,.85);margin-bottom:var(--space-2xl);line-height:1.7}.hero-buttons{display:flex;gap:var(--space-md);flex-wrap:wrap}.product-hero{position:relative;min-height:50vh;display:flex;align-items:center;overflow:hidden}.product-hero .hero-bg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1}.product-hero .hero-overlay{z-index:2;background:linear-gradient(135deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.3) 100%)}.product-hero-content{position:relative;z-index:3;padding:var(--space-4xl) 0;color:var(--color-white)}.product-hero-content h1{color:var(--color-white);margin-bottom:var(--space-md)}.product-hero-content p{color:rgba(255,255,255,.85);font-size:var(--text-lg);max-width:600px}@media(max-width:960px){:root{--header-height:64px}.header-nav{display:none}.header-contacts .header-phone{display:none}.burger{display:flex}.hero-content{max-width:100%}h1{font-size:var(--text-4xl)}h2,.section-title{font-size:var(--text-3xl)}.section,.section-alt,.section-warm,.section-dark{padding:var(--space-4xl) 0}}@media(max-width:640px){:root{--container-padding:1rem}.header-contacts .btn{display:none}h1{font-size:var(--text-3xl)}h2,.section-title{font-size:var(--text-2xl)}h3{font-size:var(--text-xl)}.section,.section-alt,.section-warm,.section-dark{padding:var(--space-2xl) 0}.hero{min-height:auto}.hero-content{padding-top:calc(var(--header-height) + var(--space-xl));padding-bottom:var(--space-2xl)}.hero-content h1{font-size:var(--text-2xl);margin-bottom:var(--space-md)}.hero-content p{font-size:var(--text-sm);margin-bottom:var(--space-lg)}.hero-buttons{flex-direction:column;gap:var(--space-sm)}}
+</style>
+
+  <link rel="preload" href="../../../assets/css/styles.min.css" as="style" onload="this.rel='stylesheet'">
+
+  <noscript><link rel="stylesheet" href="../../../assets/css/styles.min.css"></noscript>
 
   <!-- Schema.org BreadcrumbList -->
   <script type="application/ld+json">
@@ -124,12 +130,48 @@
   <section class="section">
     <div class="container">
       <div class="product-gallery">
-        <div class="product-gallery-item" style="background: url('../../../assets/images/products/px-bedroom-zebra.webp') center/cover no-repeat;"></div>
-        <div class="product-gallery-item" style="background: url('../../../assets/images/products/px-bedroom-zebra.webp') center/cover no-repeat;"></div>
-        <div class="product-gallery-item" style="background: url('../../../assets/images/products/px-bedroom-zebra.webp') center/cover no-repeat;"></div>
-        <div class="product-gallery-item" style="background: url('../../../assets/images/products/daynight-2.webp') center/cover no-repeat;"></div>
-        <div class="product-gallery-item" style="background: url('../../../assets/images/portfolio/living-modern-curtains.webp') center/cover no-repeat;"></div>
-        <div class="product-gallery-item" style="background: url('../../../assets/images/portfolio/living-panoramic.webp') center/cover no-repeat;"></div>
+        <div class="product-gallery-item">
+          <img src="../../../assets/images/products/px-bedroom-zebra.webp"
+               srcset="../../../assets/images/products/px-bedroom-zebra.webp 800w"
+               sizes="(max-width: 640px) 100vw, (max-width: 960px) 50vw, 33vw"
+               alt="Day-night zebra curtains in bedroom"
+               loading="lazy">
+        </div>
+        <div class="product-gallery-item">
+          <img src="../../../assets/images/products/px-bedroom-zebra.webp"
+               srcset="../../../assets/images/products/px-bedroom-zebra.webp 800w"
+               sizes="(max-width: 640px) 100vw, (max-width: 960px) 50vw, 33vw"
+               alt="Day-night zebra curtains in bedroom"
+               loading="lazy">
+        </div>
+        <div class="product-gallery-item">
+          <img src="../../../assets/images/products/px-bedroom-zebra.webp"
+               srcset="../../../assets/images/products/px-bedroom-zebra.webp 800w"
+               sizes="(max-width: 640px) 100vw, (max-width: 960px) 50vw, 33vw"
+               alt="Day-night zebra curtains in bedroom"
+               loading="lazy">
+        </div>
+        <div class="product-gallery-item">
+          <img src="../../../assets/images/products/daynight-2.webp"
+               srcset="../../../assets/images/products/daynight-2.webp 800w"
+               sizes="(max-width: 640px) 100vw, (max-width: 960px) 50vw, 33vw"
+               alt="Day-night curtains on windows"
+               loading="lazy">
+        </div>
+        <div class="product-gallery-item">
+          <img src="../../../assets/images/portfolio/living-modern-curtains.webp"
+               srcset="../../../assets/images/portfolio/living-modern-curtains.webp 800w"
+               sizes="(max-width: 640px) 100vw, (max-width: 960px) 50vw, 33vw"
+               alt="Modern curtains in living room"
+               loading="lazy">
+        </div>
+        <div class="product-gallery-item">
+          <img src="../../../assets/images/portfolio/living-panoramic.webp"
+               srcset="../../../assets/images/portfolio/living-panoramic.webp 800w"
+               sizes="(max-width: 640px) 100vw, (max-width: 960px) 50vw, 33vw"
+               alt="Panoramic curtains in living room"
+               loading="lazy">
+        </div>
       </div>
     </div>
   </section>

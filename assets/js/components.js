@@ -8,7 +8,7 @@
   'use strict';
 
   /* ---------- Analytics ---------- */
-  // GA4 — replace G-XXXXXXXXXX with your Measurement ID
+  // GA4
   (function(id){
     if (!id || id === 'G-XXXXXXXXXX') return;
     var s = document.createElement('script');
@@ -20,7 +20,7 @@
     gtag('js', new Date());
     gtag('config', id);
     window.gtag = gtag;
-  })('G-XXXXXXXXXX');
+  })('G-FWB7K5M1LH');
 
   // Yandex.Metrica — replace XXXXXXXXX with your counter ID
   (function(id){
