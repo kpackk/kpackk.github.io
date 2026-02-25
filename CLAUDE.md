@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Static multi-page website for **Solara Design** — premium custom curtains, blinds, and motorization in Dubai. Targets Russian-speaking audience in UAE. Pure HTML/CSS/JS, no frameworks, no build step, no package manager.
+Static multi-page website for **Solara Design** — premium custom curtains, blinds, and motorization in Dubai. Bilingual: Russian (primary) + English (`/en/`). Pure HTML/CSS/JS, no frameworks, no build step, no package manager.
 
-**Language:** All content and UI in Russian. URLs use Russian transliteration (`/shtory/`, `/blekaut/`, `/kalkulyator/`).
+**Languages:** Russian (root, `/shtory/`, `/blekaut/`) + English (`/en/`, `/en/curtains/`, `/en/blinds/`). Language switcher in both headers.
 
 ## Running Locally
 
@@ -46,11 +46,19 @@ Single CSS file with custom properties:
 
 ### JavaScript (`assets/js/`)
 
-- `components.js` — Component loader (fetch + depth resolution)
+- `components.js` — Component loader (fetch + depth resolution) + analytics injection (GA4 + Yandex.Metrica)
 - `main.js` — Mobile menu, FAQ accordion, lazy loading (IntersectionObserver), header scroll effect, WhatsApp form handler, smooth scroll
 - `calculator.js` — Price calculator: `area × basePrice × fabricMult × windows + motorization`
 
-All vanilla ES6+. Total ~354 lines.
+All vanilla ES6+.
+
+### Analytics
+
+GA4 and Yandex.Metrica are injected by `components.js` (and `components.min.js`). Both use placeholder IDs that skip initialization:
+- GA4: replace `G-XXXXXXXXXX` with real Measurement ID
+- Metrica: replace `XXXXXXXXX` with real counter ID
+
+Google Search Console verification `<meta>` tag is in `index.html` and `en/index.html` — replace `PLACEHOLDER` with actual verification code.
 
 ### Images
 
@@ -120,16 +128,18 @@ Every page includes:
 - Unique `<title>` and `<meta name="description">`
 - Geo-targeting: `geo.region=AE-DU`, `geo.placename=Dubai`, `geo.position`, `ICBM`
 - Open Graph tags (`og:title`, `og:description`, `og:type`, `og:locale=ru_RU`)
-- `hreflang="ru"` (prepared for future EN version)
+- Bidirectional `hreflang` tags (RU ↔ EN) on all pages
 - Schema.org JSON-LD: **LocalBusiness** (root), **BreadcrumbList** + **FAQPage** + **Product** (product pages), **Article** (blog posts)
 
-Domain: `solaradesign.ae` (configured in sitemap.xml, canonical URLs, and robots.txt).
+Domain: `solaradesign.com` (configured in sitemap.xml, canonical URLs, hreflang, og:url, and robots.txt).
+
+**OG Image:** Universal branded image at `assets/images/og-default.jpg` (1200×630 JPG). Used across all pages.
 
 **Important:** All internal links use absolute paths (`/shtory/`, `/zhalyuzi/`). The site must be served from root — never from a subdirectory (e.g., `example.com/subfolder/`), otherwise navigation breaks.
 
 ## Deployment
 
-**Live site:** https://kpackk.github.io/ (GitHub Pages)
+**Live site:** https://solaradesign.com/ (GitHub Pages at kpackk.github.io)
 
 **Repository:** `https://github.com/kpackk/kpackk.github.io.git` — uses the `username.github.io` naming convention so the site is served from root (not a subdirectory). All navigation uses absolute paths (`/shtory/`, `/zhalyuzi/`), which only work when served from root.
 

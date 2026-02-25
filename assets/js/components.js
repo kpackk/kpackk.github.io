@@ -1,10 +1,37 @@
 /* ============================================================
    SOLARA DESIGN - Component Loader
    Loads shared header and footer from separate HTML files.
+   Also injects analytics (GA4 + Yandex.Metrica) on first load.
    ============================================================ */
 
 (function () {
   'use strict';
+
+  /* ---------- Analytics ---------- */
+  // GA4 — replace G-XXXXXXXXXX with your Measurement ID
+  (function(id){
+    if (!id || id === 'G-XXXXXXXXXX') return;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){window.dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', id);
+    window.gtag = gtag;
+  })('G-XXXXXXXXXX');
+
+  // Yandex.Metrica — replace XXXXXXXXX with your counter ID
+  (function(id){
+    if (!id || id === 'XXXXXXXXX') return;
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();
+    for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r)return;}
+    k=e.createElement(t);a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a);
+    })(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
+    ym(id, 'init', {clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
+  })('XXXXXXXXX');
 
   /**
    * Fetch an HTML fragment and inject it into the element with the given ID.
