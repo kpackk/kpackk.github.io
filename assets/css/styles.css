@@ -130,12 +130,48 @@ select {
   font-family: inherit;
   font-size: inherit;
   border: none;
-  outline: none;
+  outline: 0;
   background: none;
 }
 
 button {
   cursor: pointer;
+}
+
+/* Focus styles for keyboard navigation (WCAG 2.4.7) */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--border-radius);
+}
+
+.form-input:focus-visible {
+  outline: none;
+}
+
+/* Skip to content link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-link:focus {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  padding: 1rem 1.5rem;
+  background: var(--color-accent);
+  color: var(--color-white);
+  z-index: 9999;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
 }
 
 /* ------------------------------------------------------------
