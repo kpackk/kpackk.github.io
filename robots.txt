@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /assets/js/
 Disallow: /components/
 Disallow: /en/components/
 Disallow: /docs/

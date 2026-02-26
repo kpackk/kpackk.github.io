@@ -197,7 +197,7 @@
           </div>
         </div>
         <!-- 9 -->
-        <div class="portfolio-item" data-category="motorizaciya" style="background: url('../assets/images/products/tulle-1.webp') center/cover no-repeat; transition: opacity 0.3s ease, transform 0.3s ease;">
+        <div class="portfolio-item" data-category="motorizaciya" style="background: url('../assets/images/portfolio/living-spacious-light.webp') center/cover no-repeat; transition: opacity 0.3s ease, transform 0.3s ease;">
           <div class="portfolio-item-overlay">
             <span class="portfolio-item-icon">&#x2197;</span>
           </div>
@@ -283,27 +283,8 @@
   <script src="../assets/js/components.min.js"></script>
   <script src="../assets/js/main.min.js"></script>
 
+  <!-- Portfolio hover text effect -->
   <script>
-    // Portfolio filters
-    document.querySelectorAll('.portfolio-filter-btn').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        document.querySelectorAll('.portfolio-filter-btn').forEach(function(b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-        var filter = btn.getAttribute('data-filter');
-        document.querySelectorAll('.portfolio-item').forEach(function(item) {
-          if (filter === 'all' || item.getAttribute('data-category') === filter) {
-            item.style.display = '';
-            setTimeout(function() { item.style.opacity = '1'; item.style.transform = 'scale(1)'; }, 10);
-          } else {
-            item.style.opacity = '0';
-            item.style.transform = 'scale(0.95)';
-            setTimeout(function() { item.style.display = 'none'; }, 300);
-          }
-        });
-      });
-    });
-
-    // Portfolio hover text
     document.querySelectorAll('.portfolio-item').forEach(function(item) {
       var hoverText = item.querySelector('.portfolio-hover-text');
       if (hoverText) {
