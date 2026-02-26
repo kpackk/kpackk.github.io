@@ -3,14 +3,16 @@
    Cache-first for assets, network-first for HTML pages.
    ============================================================ */
 
-var CACHE_NAME = 'solara-v5';
+var CACHE_NAME = 'solara-v6';
 var ASSETS_TO_PRECACHE = [
   '/',
   '/assets/css/styles.min.css',
   '/assets/js/main.min.js',
   '/assets/js/components.min.js',
+  '/assets/js/calculator.min.js',
   '/assets/images/favicon.svg',
   '/manifest.json',
+  '/en/manifest.json',
   '/assets/images/icon-192.png'
 ];
 
