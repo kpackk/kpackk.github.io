@@ -15,8 +15,14 @@ document.addEventListener('DOMContentLoaded', function () {
     var motor = document.getElementById('calc-motor').checked;
     var windows = parseInt(document.getElementById('calc-windows').value) || 1;
 
-    var basePrice = parseInt(type.selectedOptions[0].dataset.price);
-    var fabricMult = parseFloat(fabric.selectedOptions[0].dataset.mult);
+    if (!width || !height || width <= 0 || height <= 0 || isNaN(width) || isNaN(height)) {
+      document.getElementById('calc-price').textContent = '—';
+      document.getElementById('calc-result').style.display = 'block';
+      return;
+    }
+
+    var basePrice = parseInt(type.selectedOptions[0].dataset.price) || 0;
+    var fabricMult = parseFloat(fabric.selectedOptions[0].dataset.mult) || 1;
     var area = width * height;
 
     var total = area * basePrice * fabricMult * windows;
