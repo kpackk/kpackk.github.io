@@ -443,6 +443,39 @@
   }
 
   /* ----------------------------------------------------------
+     Portfolio Filters
+     ---------------------------------------------------------- */
+  function initPortfolioFilters() {
+    var buttons = document.querySelectorAll('.portfolio-filter-btn');
+    if (!buttons.length) return;
+
+    var items = document.querySelectorAll('.portfolio-item[data-category]');
+    if (!items.length) return;
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var filter = btn.getAttribute('data-filter') || btn.textContent.trim().toLowerCase();
+
+        buttons.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+
+        items.forEach(function (item) {
+          var cat = item.getAttribute('data-category');
+          if (filter === 'all' || cat === filter) {
+            item.style.opacity = '1';
+            item.style.transform = 'scale(1)';
+            item.style.display = '';
+          } else {
+            item.style.opacity = '0';
+            item.style.transform = 'scale(0.95)';
+            setTimeout(function () { item.style.display = 'none'; }, 300);
+          }
+        });
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
      Initialise Everything
      ---------------------------------------------------------- */
   function init() {
@@ -454,6 +487,7 @@
     initSmoothScroll();
     initScrollAnimations();
     initLightbox();
+    initPortfolioFilters();
     initGA4Tracking();
     registerServiceWorker();
   }

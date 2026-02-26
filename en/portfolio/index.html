@@ -104,10 +104,10 @@
   <section style="padding-bottom: var(--space-3xl);">
     <div class="container">
       <div class="portfolio-filters">
-        <button class="portfolio-filter-btn active">All</button>
-        <button class="portfolio-filter-btn">Curtains</button>
-        <button class="portfolio-filter-btn">Blinds</button>
-        <button class="portfolio-filter-btn">Motorization</button>
+        <button class="portfolio-filter-btn active" data-filter="all">All</button>
+        <button class="portfolio-filter-btn" data-filter="curtains">Curtains</button>
+        <button class="portfolio-filter-btn" data-filter="blinds">Blinds</button>
+        <button class="portfolio-filter-btn" data-filter="motorization">Motorization</button>
       </div>
     </div>
   </section>
@@ -120,7 +120,7 @@
     <div class="container">
       <div class="portfolio-grid">
         <!-- 1 -->
-        <div class="portfolio-item" style="background: url('../../assets/images/portfolio/bedroom-light-curtains.webp') center/cover no-repeat;">
+        <div class="portfolio-item" data-category="curtains" style="background: url('../../assets/images/portfolio/bedroom-light-curtains.webp') center/cover no-repeat; transition: opacity 0.3s ease, transform 0.3s ease;">
           <div class="portfolio-item-overlay">
             <span class="portfolio-item-icon">&#x2197;</span>
           </div>
@@ -129,7 +129,7 @@
           </div>
         </div>
         <!-- 2 -->
-        <div class="portfolio-item" style="background: url('../../assets/images/portfolio/living-marina-view.webp') center/cover no-repeat;">
+        <div class="portfolio-item" data-category="curtains" style="background: url('../../assets/images/portfolio/living-marina-view.webp') center/cover no-repeat; transition: opacity 0.3s ease, transform 0.3s ease;">
           <div class="portfolio-item-overlay">
             <span class="portfolio-item-icon">&#x2197;</span>
           </div>
@@ -138,7 +138,7 @@
           </div>
         </div>
         <!-- 3 -->
-        <div class="portfolio-item" style="background: url('../../assets/images/portfolio/living-modern-curtains.webp') center/cover no-repeat;">
+        <div class="portfolio-item" data-category="motorization" style="background: url('../../assets/images/portfolio/living-modern-curtains.webp') center/cover no-repeat; transition: opacity 0.3s ease, transform 0.3s ease;">
           <div class="portfolio-item-overlay">
             <span class="portfolio-item-icon">&#x2197;</span>
           </div>
@@ -147,7 +147,7 @@
           </div>
         </div>
         <!-- 4 -->
-        <div class="portfolio-item" style="background: url('../../assets/images/portfolio/living-spacious-light.webp') center/cover no-repeat;">
+        <div class="portfolio-item" data-category="blinds" style="background: url('../../assets/images/portfolio/living-spacious-light.webp') center/cover no-repeat; transition: opacity 0.3s ease, transform 0.3s ease;">
           <div class="portfolio-item-overlay">
             <span class="portfolio-item-icon">&#x2197;</span>
           </div>
@@ -156,7 +156,7 @@
           </div>
         </div>
         <!-- 5 -->
-        <div class="portfolio-item" style="background: url('../../assets/images/portfolio/living-beige-curtains.webp') center/cover no-repeat;">
+        <div class="portfolio-item" data-category="blinds" style="background: url('../../assets/images/portfolio/living-beige-curtains.webp') center/cover no-repeat; transition: opacity 0.3s ease, transform 0.3s ease;">
           <div class="portfolio-item-overlay">
             <span class="portfolio-item-icon">&#x2197;</span>
           </div>
@@ -165,7 +165,7 @@
           </div>
         </div>
         <!-- 6 -->
-        <div class="portfolio-item" style="background: url('../../assets/images/portfolio/bedroom-green-curtains.webp') center/cover no-repeat;">
+        <div class="portfolio-item" data-category="curtains" style="background: url('../../assets/images/portfolio/bedroom-green-curtains.webp') center/cover no-repeat; transition: opacity 0.3s ease, transform 0.3s ease;">
           <div class="portfolio-item-overlay">
             <span class="portfolio-item-icon">&#x2197;</span>
           </div>
@@ -174,7 +174,7 @@
           </div>
         </div>
         <!-- 7 -->
-        <div class="portfolio-item" style="background: url('../../assets/images/portfolio/bedroom-evening-curtains.webp') center/cover no-repeat;">
+        <div class="portfolio-item" data-category="curtains" style="background: url('../../assets/images/portfolio/bedroom-evening-curtains.webp') center/cover no-repeat; transition: opacity 0.3s ease, transform 0.3s ease;">
           <div class="portfolio-item-overlay">
             <span class="portfolio-item-icon">&#x2197;</span>
           </div>
@@ -183,7 +183,7 @@
           </div>
         </div>
         <!-- 8 -->
-        <div class="portfolio-item" style="background: url('../../assets/images/portfolio/living-panoramic.webp') center/cover no-repeat;">
+        <div class="portfolio-item" data-category="curtains" style="background: url('../../assets/images/portfolio/living-panoramic.webp') center/cover no-repeat; transition: opacity 0.3s ease, transform 0.3s ease;">
           <div class="portfolio-item-overlay">
             <span class="portfolio-item-icon">&#x2197;</span>
           </div>
@@ -192,7 +192,7 @@
           </div>
         </div>
         <!-- 9 -->
-        <div class="portfolio-item" style="background: url('../../assets/images/products/tulle-1.webp') center/cover no-repeat;">
+        <div class="portfolio-item" data-category="motorization" style="background: url('../../assets/images/products/tulle-1.webp') center/cover no-repeat; transition: opacity 0.3s ease, transform 0.3s ease;">
           <div class="portfolio-item-overlay">
             <span class="portfolio-item-icon">&#x2197;</span>
           </div>
@@ -201,7 +201,7 @@
           </div>
         </div>
         <!-- 10 -->
-        <div class="portfolio-item" style="background: url('../../assets/images/products/blackout-1.webp') center/cover no-repeat;">
+        <div class="portfolio-item" data-category="curtains" style="background: url('../../assets/images/products/blackout-1.webp') center/cover no-repeat; transition: opacity 0.3s ease, transform 0.3s ease;">
           <div class="portfolio-item-overlay">
             <span class="portfolio-item-icon">&#x2197;</span>
           </div>
@@ -210,7 +210,7 @@
           </div>
         </div>
         <!-- 11 -->
-        <div class="portfolio-item" style="background: url('../../assets/images/products/roman-1.webp') center/cover no-repeat;">
+        <div class="portfolio-item" data-category="blinds" style="background: url('../../assets/images/products/roman-1.webp') center/cover no-repeat; transition: opacity 0.3s ease, transform 0.3s ease;">
           <div class="portfolio-item-overlay">
             <span class="portfolio-item-icon">&#x2197;</span>
           </div>
@@ -219,7 +219,7 @@
           </div>
         </div>
         <!-- 12 -->
-        <div class="portfolio-item" style="background: url('../../assets/images/products/roller-1.webp') center/cover no-repeat;">
+        <div class="portfolio-item" data-category="motorization" style="background: url('../../assets/images/products/roller-1.webp') center/cover no-repeat; transition: opacity 0.3s ease, transform 0.3s ease;">
           <div class="portfolio-item-overlay">
             <span class="portfolio-item-icon">&#x2197;</span>
           </div>
