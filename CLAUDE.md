@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Static multi-page website for **Solara Design** — premium custom curtains, blinds, and motorization in Dubai. Bilingual: Russian (primary) + English (`/en/`). Pure HTML/CSS/JS, no frameworks, no build step, no package manager.
 
-**Languages:** Russian (root, `/shtory/`, `/blekaut/`) + English (`/en/`, `/en/curtains/`, `/en/blinds/`). Language switcher in both headers.
+**Languages:** Russian (root, `/shtory/`, `/zhalyuzi/`) + English (`/en/`, `/en/curtains/`, `/en/blinds/`). Language switcher in both headers.
 
 ## Running Locally
 
@@ -24,6 +24,7 @@ Both `.css` and `.js` have minified counterparts (`.min.css`, `.min.js`). After 
 ```bash
 npx terser assets/js/main.js -o assets/js/main.min.js --compress --mangle
 npx terser assets/js/components.js -o assets/js/components.min.js --compress --mangle
+npx terser assets/js/calculator.js -o assets/js/calculator.min.js --compress --mangle
 npx clean-css-cli assets/css/styles.css -o assets/css/styles.min.css
 ```
 
@@ -57,17 +58,17 @@ After injection, a `component:loaded` custom event is dispatched so `main.js` ca
 Single CSS file with custom properties:
 - **Accent color:** `--color-accent: #B8924A` (warm gold/bronze)
 - **Backgrounds:** `#FFFFFF`, `#F8F8F8` (alt), `#F5F0EB` (warm)
-- **Text:** `#2D2D2D` (primary), `#6B6B6B` (secondary)
+- **Text:** `#2D2D2D` (primary), `#6B6B6B` (secondary via `--color-text-light`)
 - **Font:** Montserrat (Google Fonts CDN), weights 300-700
 - **Breakpoints:** 960px (tablet), 640px (mobile)
 
-**Critical CSS:** All pages have inline `<style>` block in `<head>` with above-the-fold styles (variables, reset, header, hero, typography, buttons). The main stylesheet loads async via `<link rel="preload" ... onload="this.rel='stylesheet'">` with a `<noscript>` fallback.
+**Critical CSS:** All pages have inline `<style>` block in `<head>` with above-the-fold styles (variables, reset, header, hero, typography, buttons, `:focus-visible`, `.skip-link`). The main stylesheet loads async via `<link rel="preload" ... onload="this.rel='stylesheet'">` with a `<noscript>` fallback.
 
 ### JavaScript (`assets/js/`)
 
 - `components.js` — Component loader (fetch + depth/basepath resolution) + analytics injection (GA4 + Yandex.Metrica)
-- `main.js` — Mobile menu, FAQ accordion, lazy loading (IntersectionObserver), header scroll effect, WhatsApp form handler, smooth scroll, lightbox with navigation, GA4 event tracking, Service Worker registration
-- `calculator.js` — Price calculator: `area × basePrice × fabricMult × windows + motorization`
+- `main.js` — Mobile menu, FAQ accordion, lazy loading (IntersectionObserver), header scroll effect, WhatsApp form handler, smooth scroll, lightbox with navigation, portfolio filters, GA4 event tracking, Service Worker registration
+- `calculator.js` — Price calculator with input validation: `area × basePrice × fabricMult × windows + motorization`
 
 All vanilla ES6+.
 
@@ -81,15 +82,22 @@ Product galleries use `<img>` tags with `srcset` and `alt` text. The lightbox re
 
 GA4 (`G-FWB7K5M1LH`) and Yandex.Metrica (`107004207`) are injected by `components.js`. GA4 event tracking in `main.js` tracks WhatsApp clicks, phone calls, and form submissions.
 
-### Service Worker
+### Service Worker & PWA
 
-`sw.js` with cache `solara-v4`. Strategy: network-first for HTML, cache-first for assets. Bump version when deploying significant changes.
+`sw.js` with cache `solara-v6`. Strategy: network-first for HTML, cache-first for assets. Bump version when deploying significant changes.
+
+**PWA manifests:**
+- `/manifest.json` — Russian (start_url: `/`, lang: `ru`)
+- `/en/manifest.json` — English (start_url: `/en/`, lang: `en`)
+
+RU pages link to `/manifest.json`, EN pages link to `/en/manifest.json`.
 
 ### Images
 
 All images in **WebP** format (`assets/images/`). Subdirectories: `hero/`, `catalog/`, `products/`, `portfolio/`, `blog/`. Convert new images: `cwebp -q 80 input.png -o output.webp`.
 
 **Favicon:** SVG at `assets/images/favicon.svg`.
+**OG Image:** Universal branded image at `assets/images/og-default.jpg` (1200×630 JPG).
 
 ### Known Gotchas
 
@@ -99,6 +107,7 @@ All images in **WebP** format (`assets/images/`). Subdirectories: `hero/`, `cata
 - **Lazy loading images:** Use `data-src` (and optional `data-srcset`) instead of `src`. The `.loaded` class is added after load.
 - **No inline grid overrides on mobile:** Never use inline `style="grid-template-columns: ..."` — it overrides CSS media queries.
 - **EN basepath cannot be empty:** `data-basepath=""` is falsy in JS — use `"./"` for EN depth-1 pages.
+- **CSS variable `--color-text-light`** is the secondary text color (`#6B6B6B`). Do not use `--color-text-secondary` — it doesn't exist.
 
 ### Forms → WhatsApp
 
@@ -135,43 +144,54 @@ RUSSIAN (root)                              ENGLISH (/en/)
 /kontakty/                 depth=1          /en/contacts/               depth=2
 ```
 
-~70 pages total (35 RU + 35 EN). Every page is `{section}/index.html`. Asset paths use depth-based relative prefixes (`../../assets/css/styles.min.css` for depth=2, `../../../` for depth=3).
+~68 pages total (34 RU + 34 EN, including 10 blog articles each). Every page is `{section}/index.html`. Asset paths use depth-based relative prefixes (`../../assets/css/styles.min.css` for depth=2, `../../../` for depth=3).
 
 ## SEO Structure
 
 Every page includes:
-- Unique `<title>` and `<meta name="description">`
-- Geo-targeting: `geo.region=AE-DU`, `geo.placename=Dubai`, `geo.position`, `ICBM`
+- Unique `<title>` and `<meta name="description">` (max 160 chars)
+- `og:image:width` (1200) and `og:image:height` (630)
+- Geo-targeting: `geo.region=AE-DU`, `geo.placename=Dubai`
 - Open Graph tags (`og:title`, `og:description`, `og:type`, `og:locale`)
-- Bidirectional `hreflang` tags (RU ↔ EN) on all pages
-- Schema.org JSON-LD: **LocalBusiness** (root), **BreadcrumbList** + **FAQPage** + **Product** (product pages), **Article** (blog posts)
+- Bidirectional `hreflang` tags (RU ↔ EN + `x-default`) on all pages
+- `<time datetime="YYYY-MM-DD">` on all blog dates
+- Schema.org JSON-LD: **LocalBusiness** (root), **BreadcrumbList** + **FAQPage** + **Product** (product pages), **Article** with `publisher.logo` (blog posts), **ItemList** (hub pages), **Review** + **AggregateRating** (review pages)
+- Accessibility: `<main id="main-content">`, skip-link, `:focus-visible` styles, `aria-label` on form inputs
 
 Domain: `solaradesign.com` (configured in sitemap.xml, canonical URLs, hreflang, og:url, and robots.txt).
 
-**OG Image:** Universal branded image at `assets/images/og-default.jpg` (1200×630 JPG).
-
-**Important:** All internal links use absolute paths (`/shtory/`, `/zhalyuzi/`). The site must be served from root — never from a subdirectory.
+**Important:** All internal links use absolute paths (`/shtory/`, `/zhalyuzi/`). The site must be served from root.
 
 ## Deployment
 
-**Live site:** https://kpackk.github.io/ (GitHub Pages)
-
-**Repository:** `https://github.com/kpackk/kpackk.github.io.git` — `username.github.io` naming serves from root.
-
-**Deploy:** Push to `master` branch → GitHub Pages auto-deploys.
+**GitHub Pages:** `https://github.com/kpackk/kpackk.github.io.git` — push to `master` → auto-deploy.
 
 ```bash
 git push origin master
 ```
 
+**VPS (195.226.92.111):** Nginx serves the site on port 80. Deploy via rsync:
+
+```bash
+rsync -avz --exclude='.git' --exclude='docs' --exclude='.claude' \
+  ./ root@195.226.92.111:/var/www/solaradesign.com/
+```
+
+Nginx config: `/etc/nginx/sites-available/solaradesign.com`. After deploying, reload: `ssh root@195.226.92.111 'systemctl reload nginx'`.
+
+**Netlify config** (`netlify.toml`) exists for optional Netlify deployment with 404 redirects and cache headers, but is not currently active.
+
 ## Adding New Pages
 
 1. Create `{section}/{slug}/index.html` with correct `data-depth` on `<html>` (and `data-basepath` for EN pages)
-2. Include `<div id="site-header"></div>` and `<div id="site-footer"></div>`
-3. Include inline critical CSS `<style>` block + async stylesheet `<link rel="preload">`
+2. Include `<a href="#main-content" class="skip-link">` after `<body>`, `<div id="site-header"></div>`, `<main id="main-content">`, `<div id="site-footer"></div>`
+3. Include inline critical CSS `<style>` block (with `:focus-visible` and `.skip-link` rules) + async stylesheet `<link rel="preload">`
 4. Reference JS with correct relative prefix (`../` or `../../` or `../../../`)
-5. Add bidirectional `hreflang` tags pointing to both RU and EN versions
+5. Add bidirectional `hreflang` tags pointing to both RU and EN versions + `x-default`
 6. Add Schema.org JSON-LD (BreadcrumbList + relevant type)
-7. Add unique meta title, description, keywords, geo tags, OG tags
-8. Update `sitemap.xml` with new URL and priority
-9. Update header/footer nav if the page should appear in navigation
+7. Add unique meta title, description (under 160 chars), keywords, geo tags, OG tags with `og:image:width`/`og:image:height`
+8. Add `<time datetime="YYYY-MM-DD">` for any dates
+9. Add `aria-label` to form inputs
+10. Use `rel="noopener noreferrer"` on all external `target="_blank"` links
+11. Reference correct manifest: `/manifest.json` (RU) or `/en/manifest.json` (EN)
+12. Update `sitemap.xml` with new URL, priority, and `<lastmod>`
