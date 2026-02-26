@@ -3,5 +3,6 @@ Allow: /
 Disallow: /assets/js/
 Disallow: /components/
 Disallow: /en/components/
+Disallow: /docs/
 
 Sitemap: https://solaradesign.com/sitemap.xml
