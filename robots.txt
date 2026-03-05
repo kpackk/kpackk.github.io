@@ -1,7 +1,5 @@
 User-agent: *
-Allow: /
-Disallow: /components/
-Disallow: /en/components/
-Disallow: /docs/
+Disallow: /
 
-Sitemap: https://solaradesign.com/sitemap.xml
+# This is a GitHub Pages mirror. The canonical site is https://solara-design.com/
+# All crawling should happen there, not here.
